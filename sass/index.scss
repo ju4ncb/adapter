@@ -1,0 +1,451 @@
+@import "./page-transition-loading-animation.css";
+
+$color1: #19191b;
+$color2: #7832ba;
+$color3: #2f1b25;
+$color4: #326771;
+$color5: #2c8c99;
+
+$font-size: 16px;
+
+$color-red-d: #5c4242;
+$color-red: #ff8383;
+$color-orange-d: #5f4e44;
+$color-orange: #ffaa72;
+$color-yellow-d: #5c5b40;
+$color-yellow: #fffda2;
+$color-green-d: #394e3c;
+$color-green: #73b67c;
+$color-cyan-d: #3b5152;
+$color-cyan: #72faff;
+$color-blue-d: #413f57;
+$color-blue: #7b72ff;
+$color-purple-d: #483b53;
+$color-purple: #c072ff;
+$color-pink-d: #5a4058;
+$color-pink: #ff72f3;
+
+$colors: (
+  $color-red,
+  $color-red-d,
+  $color-orange,
+  $color-orange-d,
+  $color-yellow,
+  $color-yellow-d,
+  $color-green,
+  $color-green-d,
+  $color-cyan,
+  $color-cyan-d,
+  $color-blue,
+  $color-blue-d,
+  $color-purple,
+  $color-purple-d,
+  $color-pink,
+  $color-pink-d
+);
+
+a {
+  text-decoration: none;
+}
+code {
+  font-family: monospace;
+  background-color: $color1;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+body {
+  margin: 0;
+  background-color: $color1;
+  color: lighten($color2, 30%);
+  font-family: sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: white;
+  }
+  button {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: $color1;
+    transition: filter 0.3s ease;
+  }
+  button:hover {
+    filter: brightness(70%);
+  }
+}
+
+// layout
+
+.page-content {
+  min-height: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  $font-size: 12px;
+  .frame {
+    flex-direction: column;
+  }
+  .sidebar {
+    flex-direction: row !important;
+    justify-content: space-between;
+    height: 100px;
+    width: 100vw !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 20px;
+    .logo {
+      margin: 0 !important;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  #sidebar a:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  #sidebar a:last-child {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .fixed-form {
+    transform: translate(-50%, -50%) !important;
+  }
+  .table {
+    font-size: $font-size !important;
+  }
+
+  .center-screen {
+    transform: translate(-50%, 15%) !important;
+  }
+}
+
+.sidebar {
+  background: lighten($color1, 10%);
+  width: 140px;
+  padding: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.8em;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#sidebar .logo {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#sidebar a {
+  color: white;
+  background: lighten($color1, 18%);
+  padding: 2px 10px;
+  transition: background-color 0.3s ease;
+}
+
+#sidebar a:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#sidebar a:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#sidebar a:hover {
+  background-color: lighten($color1, 25%);
+}
+
+#sidebar a.is-active {
+  background-color: lighten($color1, 33%);
+}
+
+.frame {
+  display: flex;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.center {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: $color2;
+  border-bottom: $color2 3px solid;
+  border-top: $color2 3px solid;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  transform: translate(-50%, 20px);
+  width: 200px;
+  height: 80px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+textarea:read-only,
+input:read-only {
+  cursor: default;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: $color3;
+  border-top: solid 3px $color2;
+  border-bottom: solid 3px $color2;
+  padding: 10px;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  border-radius: 20px;
+  div {
+    display: flex;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background: lighten($color1, 5%);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: $font-size;
+  thead {
+    background: $color2;
+    color: lighten($color2, 40%);
+  }
+  tr {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+  }
+  tbody {
+    tr {
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    tr:hover {
+      background: lighten($color1, 15%);
+    }
+    .active {
+      background: lighten($color1, 10%);
+    }
+  }
+}
+
+.table-libro {
+  tr {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+  }
+}
+
+.table-revista {
+  tr {
+    grid-template-columns: 14% 14% 14% 15% 15% 14% 14%;
+  }
+}
+
+.table-video {
+  tr {
+    grid-template-columns: 17% 17% 17% 17% 16% 16%;
+  }
+}
+
+.btn-prestar {
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 18px;
+  background: linear-gradient(
+    to left,
+    $color-green,
+    $color-cyan,
+    $color-blue,
+    $color-pink
+  );
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease, color 0.5s ease;
+  color: lighten($color2, 40%);
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+  height: 35px;
+}
+
+.btn-prestar:hover {
+  background-position: right center;
+  color: #b7d9ff;
+}
+
+.btn-prestar::before {
+  content: "";
+  position: absolute;
+  top: 3px; /* Adjust based on border width */
+  left: 3px; /* Adjust based on border width */
+  right: 3px; /* Adjust based on border width */
+  bottom: 3px; /* Adjust based on border width */
+  width: 94px;
+  height: 29px;
+  border-radius: 8px; /* Adjust as needed */
+  background: $color1;
+  z-index: -1;
+}
+
+// index
+
+.container {
+  background: lighten($color1, 5%);
+  border-radius: 5px;
+  overflow: hidden;
+  nav {
+    display: flex;
+    height: 40px;
+    background: linear-gradient(
+      to left,
+      $color-green,
+      $color-cyan,
+      $color-blue,
+      $color-pink
+    );
+    button {
+      cursor: pointer;
+      background: #ffffff00;
+      transition: background-color 0.3s ease;
+      border: none;
+      flex: 1;
+    }
+    button:hover {
+      background: #ffffff81;
+    }
+    button.active {
+      background: #ffffff81;
+    }
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    height: 300px;
+    width: 400px;
+    padding: 10px;
+    input,
+    textarea {
+      background: none;
+      color: white;
+      resize: none;
+      border: none;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    input.active,
+    textarea.active {
+      background: #ffffff1f;
+    }
+
+    input {
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+}
+
+// auth
+
+.auth-container {
+  background: lighten($color1, 5%);
+  padding: 10px;
+  border-radius: 5px;
+  .auth-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      input {
+        background: none;
+        border: none;
+        border-bottom: 2px solid lighten($color2, 15%);
+        margin-bottom: 5px;
+        margin-top: 5px;
+        color: lighten($color2, 15%);
+        transition: border-color ease 0.3s, color ease 0.3s;
+      }
+      input:hover,
+      input:focus {
+        border-color: $color2;
+        color: $color2;
+      }
+    }
+    .btn-enviar {
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 18px;
+      background: linear-gradient(
+        to right,
+        $color-green,
+        $color-cyan,
+        $color-blue,
+        $color-pink
+      );
+      background-size: 200% 100%;
+      transition: background-position 0.5s ease, color 0.5s ease;
+      color: darken($color1, 10%);
+      border: none;
+      border-radius: 10px;
+      width: 140px;
+      height: 35px;
+    }
+
+    .btn-enviar:hover {
+      background-position: right center;
+      color: lighten($color1, 10%);
+    }
+  }
+}
