@@ -12,9 +12,10 @@ export default class EstudianteAdapter {
     const correoElectronico = `${this.estudianteAntiguo.nombre
       .charAt(0)
       .toLowerCase()}${this.estudianteAntiguo.apellido.toLowerCase()}@unisimon.edu.co`;
+    const periodoActual = new Date().getMonth() >= 7 ? 1 : 2;
     const semestreActual =
       (new Date().getFullYear() - this.estudianteAntiguo.anioIngreso) * 2 +
-      Number(this.estudianteAntiguo.periodoIngreso);
+      (periodoActual - (Number(this.estudianteAntiguo.periodoIngreso) - 1));
 
     return {
       nombreCompleto,
