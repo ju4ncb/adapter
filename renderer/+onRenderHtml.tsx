@@ -31,7 +31,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   const desc =
     pageContext.data?.description ||
     pageContext.config.description ||
-    "Demo de mediador y estado";
+    "Demo de adapter";
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
