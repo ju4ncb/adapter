@@ -14,7 +14,7 @@ export default class EstudianteAdapter {
       .toLowerCase()}${this.estudianteAntiguo.apellido.toLowerCase()}@unisimon.edu.co`;
     const semestreActual =
       (new Date().getFullYear() - this.estudianteAntiguo.anioIngreso) * 2 +
-      this.estudianteAntiguo.periodoIngreso;
+      Number(this.estudianteAntiguo.periodoIngreso);
 
     return {
       nombreCompleto,

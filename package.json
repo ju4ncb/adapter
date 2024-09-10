@@ -28,6 +28,7 @@
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.53.0",
     "sass": "^1.77.8",
     "sirv": "^2.0.3",
     "ts-node": "^10.9.1",

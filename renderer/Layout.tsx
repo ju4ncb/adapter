@@ -25,8 +25,7 @@ function Layout({
         <Frame>
           {!pagesNoSidebar.includes(pageTitle) && (
             <Sidebar>
-              <Link href="/">Estado</Link>
-              <Link href="/auth">Mediador</Link>
+              <Link href="/">Inicio</Link>
             </Sidebar>
           )}
           <Content>{children}</Content>

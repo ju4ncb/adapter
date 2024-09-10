@@ -272,86 +272,74 @@ input:read-only {
 }
 
 .container {
-  background: #252528;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.container nav {
-  display: flex;
-  height: 40px;
-  background: linear-gradient(to left, #73b67c, #72faff, #7b72ff, #ff72f3);
-}
-.container nav button {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0);
-  transition: background-color 0.3s ease;
-  border: none;
-  flex: 1;
-}
-.container nav button:hover {
-  background: rgba(255, 255, 255, 0.5058823529);
-}
-.container nav button.active {
-  background: rgba(255, 255, 255, 0.5058823529);
-}
-.container div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
-  height: 300px;
+  align-items: center;
   width: 400px;
+  height: 400px;
+  background: #252528;
+  border-radius: 5px;
+  overflow: hidden;
   padding: 10px;
 }
-.container div input,
-.container div textarea {
-  background: none;
+.container .input-container {
+  display: inline-block;
+  height: 55px;
+  width: 280px;
+}
+.container .input-container .error-message {
+  color: #ff8383;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.container .input-container input {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.0666666667);
   color: white;
   resize: none;
   border: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.container div input.active,
-.container div textarea.active {
-  background: rgba(255, 255, 255, 0.1215686275);
-}
-.container div input {
   text-align: center;
   font-size: 20px;
 }
-
-.auth-container {
-  background: #252528;
-  padding: 10px;
-  border-radius: 5px;
+.container .input-container input.active {
+  background: rgba(255, 255, 255, 0.1215686275);
 }
-.auth-container .auth-form {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.auth-container .auth-form div {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-.auth-container .auth-form div input {
-  background: none;
+.container select,
+.container option {
+  width: 280px;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  box-shadow: none;
   border: none;
-  border-bottom: 2px solid #9e63d5;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  color: #9e63d5;
-  transition: border-color ease 0.3s, color ease 0.3s;
 }
-.auth-container .auth-form div input:hover,
-.auth-container .auth-form div input:focus {
-  border-color: #7832ba;
-  color: #7832ba;
+.container select {
+  height: 30px;
+  border: none;
+  background: rgba(255, 255, 255, 0.0666666667);
+  color: #fff;
+  margin-bottom: 10px;
 }
-.auth-container .auth-form .btn-enviar {
+.container select option {
+  background: #2c2c2c;
+}
+.container button {
+  margin-bottom: 10px;
+}
+.container h3 {
+  margin: 5px;
+  font-size: 14px;
+}
+.container p {
+  margin: 5px;
+  font-size: 12px;
+}
+
+.btn-enviar {
   cursor: pointer;
   margin-top: 20px;
   font-size: 18px;
@@ -364,7 +352,8 @@ input:read-only {
   width: 140px;
   height: 35px;
 }
-.auth-container .auth-form .btn-enviar:hover {
+
+.btn-enviar:hover {
   background-position: right center;
   color: #323235;
 }

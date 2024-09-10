@@ -53,6 +53,7 @@ async function startServer() {
     const estudianteAntiguo: EstudianteAntiguo = req.body;
     const adapter = new EstudianteAdapter(estudianteAntiguo);
     const estudianteNuevo = adapter.getEstudianteNuevo();
+    console.log(estudianteAntiguo, estudianteNuevo);
     res.json(estudianteNuevo);
   });
 
