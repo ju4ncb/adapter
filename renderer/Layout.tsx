@@ -1,9 +1,7 @@
 export { Layout };
 
 import React from "react";
-import logoUrl from "./logo.svg";
 import { PageContextProvider } from "./usePageContext";
-import { Link } from "./Link";
 import type { PageContext } from "vike/types";
 import "./css/index.css";
 
@@ -14,20 +12,10 @@ function Layout({
   children: React.ReactNode;
   pageContext: PageContext;
 }) {
-  const pagesNoSidebar = ["inicio"];
-  let pageTitle: string;
-  pageContext.data?.title !== undefined
-    ? (pageTitle = pageContext.data?.title)
-    : (pageTitle = "");
   return (
     <React.StrictMode>
       <PageContextProvider pageContext={pageContext}>
         <Frame>
-          {!pagesNoSidebar.includes(pageTitle) && (
-            <Sidebar>
-              <Link href="/">Inicio</Link>
-            </Sidebar>
-          )}
           <Content>{children}</Content>
         </Frame>
       </PageContextProvider>
@@ -37,14 +25,6 @@ function Layout({
 
 function Frame({ children }: { children: React.ReactNode }) {
   return <div className="frame">{children}</div>;
-}
-
-function Sidebar({ children }: { children: React.ReactNode }) {
-  return (
-    <div id="sidebar" className="sidebar">
-      {children}
-    </div>
-  );
 }
 
 function Content({ children }: { children: React.ReactNode }) {
